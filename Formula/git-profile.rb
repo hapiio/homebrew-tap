@@ -5,57 +5,53 @@
 class GitProfile < Formula
   desc "Manage multiple git identity profiles with a single command"
   homepage "https://github.com/hapiio/git-profile"
-  version "0.0.1"
+  version "0.0.2"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/hapiio/git-profile/releases/download/v0.0.1/git-profile_darwin_x86_64.tar.gz"
-      sha256 "33a42d29024df81dc84b1004d4d53de0192c94b211259dba4f81f56ce1f7f57a"
+      url "https://github.com/hapiio/git-profile/releases/download/v0.0.2/git-profile_darwin_x86_64.tar.gz"
+      sha256 "eb45435f369cb9ee63ebb12b4ea83ef2b28ec262478ce8e9537568bdb93d268e"
 
       define_method(:install) do
         bin.install "git-profile"
-        # Shell completions
-        bash_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "bash") => "git-profile"
-        zsh_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "zsh") => "_git-profile"
-        fish_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "fish") => "git-profile.fish"
+        # generate_completions_from_executable runs `git-profile completion <shell>`
+        # and writes the output to the correct Homebrew completion directory.
+        generate_completions_from_executable(bin/"git-profile", "completion")
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/hapiio/git-profile/releases/download/v0.0.1/git-profile_darwin_arm64.tar.gz"
-      sha256 "05721c0cfc9301176060da3c9f94a328aea1264903ab331c37131127ac499b27"
+      url "https://github.com/hapiio/git-profile/releases/download/v0.0.2/git-profile_darwin_arm64.tar.gz"
+      sha256 "a32affae8310846c8efa6c6f930be8323458ce2158e5191473b18e1d00bd5a18"
 
       define_method(:install) do
         bin.install "git-profile"
-        # Shell completions
-        bash_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "bash") => "git-profile"
-        zsh_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "zsh") => "_git-profile"
-        fish_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "fish") => "git-profile.fish"
+        # generate_completions_from_executable runs `git-profile completion <shell>`
+        # and writes the output to the correct Homebrew completion directory.
+        generate_completions_from_executable(bin/"git-profile", "completion")
       end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/hapiio/git-profile/releases/download/v0.0.1/git-profile_linux_x86_64.tar.gz"
-      sha256 "138ce98d61101894d12df08441fdf1be337be414f9f59b64fb060ab848e923a5"
+      url "https://github.com/hapiio/git-profile/releases/download/v0.0.2/git-profile_linux_x86_64.tar.gz"
+      sha256 "393e15402ed9925496fc43ca7fc8aca2719ca24aad19ef14b96034cffaee3549"
       define_method(:install) do
         bin.install "git-profile"
-        # Shell completions
-        bash_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "bash") => "git-profile"
-        zsh_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "zsh") => "_git-profile"
-        fish_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "fish") => "git-profile.fish"
+        # generate_completions_from_executable runs `git-profile completion <shell>`
+        # and writes the output to the correct Homebrew completion directory.
+        generate_completions_from_executable(bin/"git-profile", "completion")
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/hapiio/git-profile/releases/download/v0.0.1/git-profile_linux_arm64.tar.gz"
-      sha256 "6216e3a6ee4364da0d4ffc6536242132b4fb6300e75a276bc0574ac42f65129e"
+      url "https://github.com/hapiio/git-profile/releases/download/v0.0.2/git-profile_linux_arm64.tar.gz"
+      sha256 "e12e9089001327220e44314dc822fc56930efdb126c39b6b79131812b9aca551"
       define_method(:install) do
         bin.install "git-profile"
-        # Shell completions
-        bash_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "bash") => "git-profile"
-        zsh_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "zsh") => "_git-profile"
-        fish_completion.install Utils.safe_popen_read(bin/"git-profile", "completion", "fish") => "git-profile.fish"
+        # generate_completions_from_executable runs `git-profile completion <shell>`
+        # and writes the output to the correct Homebrew completion directory.
+        generate_completions_from_executable(bin/"git-profile", "completion")
       end
     end
   end
